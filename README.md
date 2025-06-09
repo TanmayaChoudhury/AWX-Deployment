@@ -30,7 +30,7 @@ helm repo add awx-operator-helm https://ansible-community.github.io/awx-operator
 ```
 
 ```console
-update repos: helm repo update
+helm repo update
 ```
 
 ### 3️⃣ Prepare Configuration

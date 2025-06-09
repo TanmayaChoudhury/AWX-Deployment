@@ -1,0 +1,18 @@
+AWX:
+  enabled: true
+  name: awx
+  spec:
+    service_type: NodePort
+    ingress_type: none
+    hostname: awx.local
+    admin_user: admin
+
+  postgres:
+    enabled: false
+    host: Unset
+    port: 5678
+    dbName: Unset
+    username: admin
+    password: Unset
+    sslmode: prefer
+    type: unmanaged

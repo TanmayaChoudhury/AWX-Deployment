@@ -1,10 +1,12 @@
-# **#📦 AWX Deployment Using AWX Operator and Helm**
+# 📦 AWX Deployment Using AWX Operator and Helm
 
-**## 📖 Overview**
+## 📖 Overview
+
 This project demonstrates deploying AWX (Ansible Web eXecutable) on a Kubernetes cluster using the AWX Operator Helm chart.
 AWX is an open-source web-based UI for managing Ansible automation.
 
-**## 📋 Prerequisites**
+## 📋 Prerequisites
+
 A Kubernetes cluster (local or cloud)
 
 kubectl configured to access your cluster
@@ -13,19 +15,26 @@ Helm 3 installed
 
 Basic knowledge of Kubernetes and Helm
 
-**## 🚀 Installation Steps**
+## 🚀 Installation Steps
+
 ### 1️⃣ Create the AWX Namespace
-Run: kubectl create ns awx
+
+```console
+kubectl create ns awx
+```
 
 ### 2️⃣ Add the AWX Operator Helm Repository
-Run: ```console
+
+```console
 helm repo add awx-operator-helm https://ansible-community.github.io/awx-operator-helm/
 ```
-Then ```console
+
+```console
 update repos: helm repo update
 ```
 
 ### 3️⃣ Prepare Configuration
+
 A configuration file named awx-values.yaml is included in this repository.
 It defines deployment settings like service type, PostgreSQL connection details, and admin credentials.
 
@@ -56,7 +65,9 @@ Forward the AWX web service port to your local machine:
 kubectl port-forward svc/awx-service -n awx 10000:80 --address=0.0.0.0
 ```
 
-Then open your browser and go to: ```console
+Then open your browser and go to: 
+
+```console
 http://localhost:10000
 ```
 
@@ -67,6 +78,8 @@ Login using the admin username and password configured in your awx-values.yaml f
 ![](Images/AfterLogin.PNG)
 
 **## 📖 Additional Help**
+
+
 AWX Official Documentation: https://awx.readthedocs.io/en/latest/
 
 AWX Operator Helm Chart Repo: https://github.com/ansible/awx-operator

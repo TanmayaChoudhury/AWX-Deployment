@@ -1,4 +1,6 @@
-# 📦 AWX Deployment Using AWX Operator and Helm (⚠️ Work-in-progress learning project — issues expected, improvements ongoing)
+# 📦 AWX Deployment Using AWX Operator and Helm 
+
+## (⚠️ Work-in-progress learning project — issues expected, improvements ongoing)
 
 ## 📖 Overview
 

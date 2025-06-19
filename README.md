@@ -81,7 +81,58 @@ Login using the admin username and password configured in your awx-values.yaml f
 
 ![](Images/AfterLogin.PNG)
 
-**## 📖 Additional Help**
+## 🛑 Known Issues & Resolutions
+
+### 📌 1️⃣ Inotify Watch Limit Reached Error
+
+#### Problem: Failed to JSON parse a line from worker stream. Error: Expecting value: line 1 column 1 (char 0) Line with invalid JSON data: b''
+
+AWX may fail to start or show errors due to the default inotify watch limit being too low on the host system.
+
+#### Solution:
+
+Increase inotify limits on your host machine:
+
+```console
+Increase inotify limits on your host machine:
+sudo nano /etc/sysctl.d/99-inotify.conf
+```
+Add the following lines:
+
+```console
+fs.inotify.max_user_instances = 8192
+fs.inotify.max_user_watches = 524288
+```
+Then apply the changes:
+
+```console
+sudo sysctl --system
+```
+Verify current values:
+
+```console
+cat /proc/sys/fs/inotify/max_user_instances
+cat /proc/sys/fs/inotify/max_user_watches
+```
+You should see the updated numbers (**8192** and **524288**).
+
+### 📌 2️⃣ How to Retrieve AWX Admin Password
+
+#### Problem:
+
+If you forget or didn’t set the AWX Web Console admin password, and one was auto-generated during installation.
+
+#### Solution:
+
+Retrieve it from the Kubernetes secret:
+
+```console
+kubectl get secret awx-admin-password -n awx -o jsonpath="{.data.password}" | base64 --decode
+```
+This will print the admin password to your terminal.
+
+
+## 📖 Additional Help
 
 
 AWX Official Documentation: https://awx.readthedocs.io/en/latest/
